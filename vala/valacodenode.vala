@@ -273,7 +273,7 @@ public abstract class Vala.CodeNode {
 		}
 
 		unowned Attribute a = get_or_create_attribute (attribute);
-		a.add_argument (argument, "\"%s\"".printf (value));
+		a.add_argument (argument, new StringLiteral ("\"%s\"".printf (value)));
 	}
 
 	/**
@@ -285,7 +285,7 @@ public abstract class Vala.CodeNode {
 	 */
 	public void set_attribute_integer (string attribute, string argument, int value, SourceReference? source_reference = null) {
 		unowned Attribute a = get_or_create_attribute (attribute);
-		a.add_argument (argument, value.to_string ());
+		a.add_argument (argument, new IntegerLiteral (value.to_string (), source_reference));
 	}
 
 	/**
@@ -297,7 +297,7 @@ public abstract class Vala.CodeNode {
 	 */
 	public void set_attribute_double (string attribute, string argument, double value, SourceReference? source_reference = null) {
 		unowned Attribute a = get_or_create_attribute (attribute);
-		a.add_argument (argument, value.format (new char[double.DTOSTR_BUF_SIZE]));
+		a.add_argument (argument, new RealLiteral (value.format (new char[double.DTOSTR_BUF_SIZE]), source_reference));
 	}
 
 	/**
@@ -309,7 +309,7 @@ public abstract class Vala.CodeNode {
 	 */
 	public void set_attribute_bool (string attribute, string argument, bool value, SourceReference? source_reference = null) {
 		unowned Attribute a = get_or_create_attribute (attribute);
-		a.add_argument (argument, value.to_string ());
+		a.add_argument (argument, new BooleanLiteral (value, source_reference));
 	}
 
 	/**

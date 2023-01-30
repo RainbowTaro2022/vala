@@ -2396,7 +2396,7 @@ public class Vala.Genie.Parser : CodeVisitor {
 						do {
 							id = parse_identifier ();
 							expect (TokenType.ASSIGN);
-							attr.add_argument (id, parse_attribute_value ());
+							attr.add_argument (id, parse_unary_expression ());
 						} while (accept (TokenType.COMMA));
 					}
 					expect (TokenType.CLOSE_PARENS);
