@@ -91,6 +91,10 @@ public abstract class Vala.CodeNode {
 	}
 
 	public virtual bool check (CodeContext context) {
+		foreach (unowned Attribute a in attributes) {
+			a.check (context);
+		}
+
 		return true;
 	}
 

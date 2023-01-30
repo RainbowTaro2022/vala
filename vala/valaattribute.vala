@@ -158,6 +158,10 @@ public class Vala.Attribute : CodeNode {
 			if (!attr.check (context)) {
 				return false;
 			}
+			if (!attr.is_constant ()) {
+				Report.error (attr.source_reference, "attribute values must be constant");
+				return false;
+			}
 		}
 
 		return true;
