@@ -78,6 +78,22 @@ public class Vala.Attribute : CodeNode {
 	}
 
 	/**
+	 * Returns the expression of the specified named argument.
+	 *
+	 * @param name argument name
+	 * @return     expression value
+	 */
+	public Expression? get_expression (string name, Expression? default_value = null) {
+		Expression value = args.get (name);
+
+		if (value == null) {
+			return default_value;
+		}
+
+		return value;
+	}
+
+	/**
 	 * Returns the string value of the specified named argument.
 	 *
 	 * @param name argument name

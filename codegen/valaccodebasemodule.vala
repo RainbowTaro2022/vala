@@ -6779,4 +6779,9 @@ public abstract class Vala.CCodeBaseModule : CodeGenerator {
 			return new CCodeConstant (b ? "true" : "false");
 		}
 	}
+
+	public CCodeExpression get_ccode_expression (Expression expr) {
+		expr.accept (this);
+		return get_cvalue (expr);
+	}
 }
